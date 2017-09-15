@@ -52,6 +52,8 @@ allprojects{
 
 
 ### 启动
+cd blog/initial
+./gradlew bootRun
 
 
 ### 测试

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>Get your greeting <a href="/greeting">here</a></p>
+
+<p>添加用户表单：</p>
+<form action="/api/user/add" method="post">
+    <p>Name: <input type="text" name="name" /></p>
+    <p>Email: <input type="text" name="email" /></p>
+    <input type="submit" value="Submit" />
+</form>
+
+<p>添加文章表单：</p>
+<form action="/api/article/add" method="post">
+    <p>Title: <input type="text" name="title" /></p>
+    <p>Author: <input type="text" name="author" /></p>
+    <p>Content: <textarea type="text" name="content"></textarea></p>
+    <input type="submit" value="Submit" />
+</form>
+
+
+</body>
+</html>

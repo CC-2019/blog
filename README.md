@@ -58,10 +58,18 @@ allprojects{
 
 **添加用户**
 
-http://localhost:8100/api/add?name=First&email=someemail@someemailprovider.com
+http://localhost:8100/api/user/add?name=test&email=someemail@someemailprovider.com
 
-curl -d "email=post@163.com&name=postUser" "http://localhost:8100/api/post/add"
+curl -d "email=post@163.com&name=postUser" "http://localhost:8100/api/user/add"
 
 **查询所有用户**
 
-http://localhost:8100/api/all
+http://localhost:8100/api/user/all
+
+**添加文章**
+
+curl -d "title=123&author=caojian&content=this is a test" "http://localhost:8100/api/article/add"
+
+**查询所有文章**
+
+http://localhost:8100/api/article/all

@@ -16,7 +16,7 @@
 
 **对数据库授权用户**
 
-`grant all on blog.* to 'blog'@'localhost'`
+`grant all on blog.* to 'blog'@'localhost';`
 
 **刷新数据库权限**
 

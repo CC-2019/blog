@@ -1,4 +1,4 @@
-package blog;
+package blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import blog.User;
-import blog.UserRepository;
+import blog.model.User;
+import blog.model.UserRepository;
 
 @Controller
 @RequestMapping(path="/api/user")
@@ -21,11 +22,16 @@ public class ApiUserController {
 
     @GetMapping(path="/add") // Map ONLY GET Requests
     public @ResponseBody String addNewUser (@RequestParam String name
-            , @RequestParam String email) {
+            , @RequestParam String email
+            , @RequestParam String pwd) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         User n = new User();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(pwd);
+        n.setPwd(hashedPassword);
+
         n.setName(name);
         n.setEmail(email);
         userRepository.save(n);
@@ -34,13 +40,18 @@ public class ApiUserController {
 
     @PostMapping(path="/add")
     public @ResponseBody String postAddNewUser (@RequestParam String name
-            , @RequestParam String email) {
+            , @RequestParam String email
+            , @RequestParam String pwd) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         User n = new User();
         n.setName(name);
         n.setEmail(email);
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(pwd);
+        n.setPwd(hashedPassword);
         userRepository.save(n);
         return "Saved";
     }

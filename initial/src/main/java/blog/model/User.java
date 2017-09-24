@@ -1,4 +1,4 @@
-package blog;
+package blog.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,8 @@ public class User {
     private String name;
 
     private String email;
+
+    private String pwd;
 
     public Integer getId() {
         return id;
@@ -37,6 +39,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
 }
